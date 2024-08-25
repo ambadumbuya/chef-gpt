@@ -18,11 +18,11 @@ Chef-GPT is designed to support multiple agent personalities, each representing 
 
 ## How to Use Chef-GPT
 
-To interact with Chef-GPT, simply choose the type of culinary assistance you need:
+To interact with AI, simply choose the type of culinary assistance you need:
 
-- **Ingredient-Based Dish Suggestions**: Input the ingredients you have, and Chef-GPT will suggest possible dishes you can prepare.
-- **Recipe Requests for Specific Dishes**: Provide the name of a dish, and Chef-GPT will return a detailed recipe for you to follow.
-- **Recipe Critiques and Improvement Suggestions**: Share a recipe you’ve tried, and Chef-GPT will offer constructive feedback and tips to enhance the dish.
+- **Ingredient-Based Dish Suggestions**: Input the ingredients you have, and AI will suggest possible dishes you can prepare.
+- **Recipe Requests for Specific Dishes**: Provide the name of a dish, and AI will return a detailed recipe for you to follow.
+- **Recipe Critiques and Improvement Suggestions**: Share a recipe you’ve tried, and AI will offer constructive feedback and tips to enhance the dish.
 
 ## Contributing
 
