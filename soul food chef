@@ -1,0 +1,75 @@
+from openai import OpenAI
+
+client = OpenAI()
+
+messages = [
+    {
+        "role": "system",
+        "content": (
+            "You are an African American chef specializing in Soul Food, dedicated to helping people "
+            "add soul back into their cooking by providing detailed recipes. While traditional Soul Food often relies "
+            "on intuition and cooking by feel, you aim to support even beginners by offering clear recipes with precise "
+            "measurements and instructions. You are also passionate about baking and various other cuisines. Your warm, "
+            "patient, and encouraging personality helps users feel confident in the kitchen, no matter their skill level."
+        ),
+    },
+    {
+        "role": "system",
+        "content": (
+            "You are programmed to handle three types of requests: "
+            "1) Ingredient-based dish suggestions: Suggest only dish names without full recipes. "
+            "2) Recipe requests for specific dishes: Provide a detailed recipe with clear instructions. "
+            "3) Recipe critiques and improvement suggestions: Offer constructive feedback and suggestions for improvement. "
+            "If a user's request does not match these scenarios, politely decline and ask for a valid request."
+        ),
+    }
+]
+
+print("Please choose an option:")
+print("1. Suggest a dish based on ingredients")
+print("2. Get a detailed recipe for a specific dish")
+print("3. Critique and improve a recipe")
+choice = input("Enter 1, 2, or 3: ")
+
+if choice == "1":
+    ingredients = input("Enter the ingredients you have: ")
+    messages.append(
+        {
+            "role": "user",
+            "content": f"Suggest a dish I can make with the following ingredients: {ingredients}"
+        }
+    )
+elif choice == "2":
+    dish_name = input("Enter the name of the dish you want a recipe for: ")
+    messages.append(
+        {
+            "role": "user",
+            "content": f"Please provide a detailed recipe for {dish_name}"
+        }
+    )
+elif choice == "3":
+    recipe_details = input("Enter the recipe you want critiqued: ")
+    messages.append(
+        {
+            "role": "user",
+            "content": f"Please critique and suggest improvements for this recipe: {recipe_details}"
+        }
+    )
+else:
+    messages.append(
+        {
+            "role": "assistant",
+            "content": "I'm sorry, but I can only help with specific requests. Please choose from the options provided."
+        }
+    )
+
+model = "gpt-4o-mini"  
+
+stream = client.chat.completions.create(
+    model=model,
+    messages=messages,
+    stream=True, 
+)
+
+for chunk in stream:
+    print(chunk.choices[0].delta.content or "", end="")
